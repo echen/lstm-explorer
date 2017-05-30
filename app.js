@@ -33,13 +33,13 @@ app.controller("LSTMsController", ["$scope", "$routeParams", "LSTMService", func
     $scope.name = (data["name"] === undefined ? $scope.file : data["name"]);
     $scope.$apply();    
 
-    var vectors = _.map(data[$scope.vector + $scope.layerIndex], function(x) { return LSTMService.nnn($scope.vector, x); });
-    var neuronCs = _.map(data["cs" + $scope.layerIndex], function(x) { return LSTMService.nnn("cs", x); });
-    var neuronHs = _.map(data["hs" + $scope.layerIndex], function(x) { return LSTMService.nnn("hs", x); });
-    var neuronFs = _.map(data["f_gate" + $scope.layerIndex], function(x) { return LSTMService.nnn("f_gate", x); });
-    var neuronIs = _.map(data["i_gate" + $scope.layerIndex], function(x) { return LSTMService.nnn("i_gate", x); });
-    var neuronJs = _.map(data["j_gate" + $scope.layerIndex], function(x) { return LSTMService.nnn("j_gate", x); });
-    var neuronOs = _.map(data["o_gate" + $scope.layerIndex], function(x) { return LSTMService.nnn("o_gate", x); });
+    var vectors = _.map(data[$scope.vector + $scope.layerIndex], function(x) { return LSTMService.normalizer($scope.vector, x); });
+    var neuronCs = _.map(data["cs" + $scope.layerIndex], function(x) { return LSTMService.normalizer("cs", x); });
+    var neuronHs = _.map(data["hs" + $scope.layerIndex], function(x) { return LSTMService.normalizer("hs", x); });
+    var neuronFs = _.map(data["f_gate" + $scope.layerIndex], function(x) { return LSTMService.normalizer("f_gate", x); });
+    var neuronIs = _.map(data["i_gate" + $scope.layerIndex], function(x) { return LSTMService.normalizer("i_gate", x); });
+    var neuronJs = _.map(data["j_gate" + $scope.layerIndex], function(x) { return LSTMService.normalizer("j_gate", x); });
+    var neuronOs = _.map(data["o_gate" + $scope.layerIndex], function(x) { return LSTMService.normalizer("o_gate", x); });
 
     var numVectors = vectors.length;
 
@@ -98,12 +98,12 @@ app.controller("NeuronsController", ["$scope", "$routeParams", "LSTMService", fu
     $scope.lstmName = (data["name"] === undefined ? $scope.file : data["name"]);    
     $scope.$apply();
     
-    var neuronCs = _.map(data["cs" + $scope.layerIndex], function(x) { return LSTMService.nnn("cs", x); });
-    var neuronHs = _.map(data["hs" + $scope.layerIndex], function(x) { return LSTMService.nnn("hs", x); });
-    var neuronFs = _.map(data["f_gate" + $scope.layerIndex], function(x) { return LSTMService.nnn("f_gate", x); });
-    var neuronIs = _.map(data["i_gate" + $scope.layerIndex], function(x) { return LSTMService.nnn("i_gate", x); });
-    var neuronJs = _.map(data["j_gate" + $scope.layerIndex], function(x) { return LSTMService.nnn("j_gate", x); });
-    var neuronOs = _.map(data["o_gate" + $scope.layerIndex], function(x) { return LSTMService.nnn("o_gate", x); });
+    var neuronCs = _.map(data["cs" + $scope.layerIndex], function(x) { return LSTMService.normalizer("cs", x); });
+    var neuronHs = _.map(data["hs" + $scope.layerIndex], function(x) { return LSTMService.normalizer("hs", x); });
+    var neuronFs = _.map(data["f_gate" + $scope.layerIndex], function(x) { return LSTMService.normalizer("f_gate", x); });
+    var neuronIs = _.map(data["i_gate" + $scope.layerIndex], function(x) { return LSTMService.normalizer("i_gate", x); });
+    var neuronJs = _.map(data["j_gate" + $scope.layerIndex], function(x) { return LSTMService.normalizer("j_gate", x); });
+    var neuronOs = _.map(data["o_gate" + $scope.layerIndex], function(x) { return LSTMService.normalizer("o_gate", x); });
     
     LSTMService.buildSequence("Cell State", data["chars"], neuronCs[$scope.neuronIndex], colorizer11, null, null, null, false);
     LSTMService.buildSequence("Hidden State", data["chars"], neuronHs[$scope.neuronIndex], colorizer11, null, null, null, false);
