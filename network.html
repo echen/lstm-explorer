@@ -1,0 +1,27 @@
+<h1 class="title">{{name}}</h1>
+
+<div id="layersButtons" class="btn-group" role="group">
+  <div ng-repeat="i in range" class="btn-group" role="group">
+    <button id="layer{{i}}Button" type="button" ng-class="i == layer ? 'btn btn-danger dropdown-toggle active' : 'btn btn-secondary dropdown-toggle'" data-toggle="dropdown">
+      <span ng-if="i == layer">
+         Layer {{i}} - {{vectorMap[vector]}}
+       </span>
+       <span ng-if="i != layer">
+         Layer {{i}}
+        </span>
+    </button>
+    <div class="dropdown-menu">
+      <a ng-repeat="whichVector in ['cs', 'hs', 'f_gate', 'i_gate', 'j_gate', 'o_gate']" 
+         class="dropdown-item" 
+         href="/#/?file={{file}}&vector={{whichVector}}&layer={{i}}">
+         {{vectorMap[whichVector]}}
+      </a>
+    </div>
+  </div>
+</div>
+
+<button id="revealCharsButton" type="button" class="btn btn-secondary" data-toggle="button">
+  Hide Characters
+</button>
+
+<div id="sequences" class="container"></div>
