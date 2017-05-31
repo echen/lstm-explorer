@@ -59,3 +59,16 @@ span.character {
   margin-left: 1px;
   float: right;
 }
+
+img.center {
+  display: block;
+  margin: 0 auto;
+}
+
+.gallery a {
+  color: black;
+}
+
+.gallery img {
+  padding-bottom: 10px;
+}
