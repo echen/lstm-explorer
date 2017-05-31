@@ -67,6 +67,10 @@ img.center {
 
 .gallery a {
   color: black;
+  text-decoration: underline;
+}
+.gallery a:hover {
+  color: #0000EE;
 }
 
 .gallery img {
